@@ -4,9 +4,15 @@ html {
 
 html,
 body {
-    height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+html,
+body,
+#root,
+.App {
+    height: 100vh;
 }
 
 *, ::before, ::after {
@@ -24,10 +30,19 @@ body {
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 a, a:hover {
     transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
+}
+
+.main {
+    width: 100%;
+    height: calc(100% - 6.5rem);//Altura del header
+    max-width: 1450px;
+    padding: 0 10px;
+    margin: 0 auto;
 }
