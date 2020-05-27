@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './../components/Header';
-import Footer from './../components/Footer';
+// import Footer from './../components/Footer';
 
 const MainLayout = props => {
     return (
@@ -9,7 +9,7 @@ const MainLayout = props => {
             <div className="main">
                 {props.children}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };
