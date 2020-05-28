@@ -10,8 +10,8 @@ const ProductBox = ({ data, key }) => {
                 </div>
                 <div className="product">
                     <div className="info">
-                        <p>{data.nombre}</p>
-                        <p>${data.precio}.00</p>
+                        <p className="nombre">{data.nombre}</p>
+                        <p className="precio">${data.precio}.00</p>
                     </div>
                     <div className="add">
                         <button>Agregar</button>

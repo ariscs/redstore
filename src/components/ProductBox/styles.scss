@@ -1,6 +1,6 @@
 .pboxWrap{
     height: 100%;
-    width: 18%;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,8 +10,10 @@
         height: 90%;
         width: 90%;
         display: flex;
+        padding: 5px;
         flex-direction: column;
-        border: solid 1px black;
+        // border: solid 1px black;
+        box-shadow: 0px 0.5px 1px #ddd,0 8px 10px #ccc;
         border-radius: 10px;
         font-size: 1.2rem;
         overflow: hidden;
@@ -34,14 +36,32 @@
 
                 p {
                     padding-left: 1rem;
+                    font-size: 1.4rem;
+                }
+                .nombre {
+                    font-weight: bold;
                 }
             }
 
             .add {
                 width: 30%;
                 display: flex;
-                align-items: center;
+                align-items: flex-end;
                 justify-content: center;
+                
+                button{
+                    border-style: none;
+                    background: #E3F1EE;
+                    outline: none;
+                    width: 100%;
+                    height: 40%;
+                    cursor: pointer;
+                    border-radius: 10px;
+                }
+                button:hover{
+                    background: teal;
+                    color: white;
+                }
             }
         }
     }

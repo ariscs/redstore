@@ -26,16 +26,36 @@ const Directory = props => {
     return (
         <div className="directory">
             <div className="wrap">
-                <div className="category" style={{backgroundImage: `url(${Board})`}}>
+                <div div className = "category"
+                style = {
+                    {
+                        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Board})`
+                    }
+                } >
                     <p>Compra Tarjetas</p>
                 </div>
-                <div className="category" style={{backgroundImage: `url(${Sensor})`}}>
+                <div div className = "category"
+                style = {
+                    {
+                        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Sensor})`
+                    }
+                } >
                     <p>Compra Sensores</p>
                 </div>
-                <div className="category" style={{backgroundImage: `url(${Final})`}}>
+                <div div className = "category"
+                style = {
+                    {
+                        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Final})`
+                    }
+                } >
                     <p>Compra Productos Domesticos</p>
                 </div>
-                <div className="category" style={{backgroundImage: `url(${Accesories})`}}>
+                <div div className = "category"
+                style = {
+                    {
+                        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Accesories})`
+                    }
+                } >
                     <p>Compra Accesorios</p>
                 </div>
             </div>
