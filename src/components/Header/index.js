@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { IoIosCart } from 'react-icons/io'
 import './styles.scss';
 
 import { auth } from './../../firebase/utils';
@@ -22,6 +23,7 @@ const Header = props => {
                 <div className="callToActions">
                     {currentUser && (
                     <ul>
+                        <li><IoIosCart size="30px"/></li>
                         <li><span onClick={() => auth.signOut()}>Salir</span></li>
                     </ul>
                     )}

@@ -6,12 +6,16 @@ import Sensor from './../../assets/sensor.jpg';
 import Final from './../../assets/final.jpg';
 import Accesories from './../../assets/accesories.jpg';
 
-import { firestore } from './../../firebase/utils';
+import { firestore, auth } from './../../firebase/utils';
 
 import ProductBox from './../../components/ProductBox'
 
 const Directory = props => {
     const [d, setD] = useState([]);
+    const [cart, setCart] = useState({
+        productos: [],
+        user: null
+    })
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,7 +24,16 @@ const Directory = props => {
             setD(data.docs);
             // const ids = data.docs.map(doc => (doc.id));
         }
+
+        const getUser = async () => {
+            const cUser = await auth.currentUser;
+            setCart({
+                user: cUser,
+            })
+        }
+
         fetchData();
+        getUser();
     }, []);
 
     return (

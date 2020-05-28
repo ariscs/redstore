@@ -31,6 +31,13 @@
             -webkit-transform: translateY(-50%);
             -moz-transform: translateY(-50%);
             transform: translateY(-50%);
+            height: 100%;
+
+            ul {
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
 
             ul, li {
                 margin: 0;
@@ -38,9 +45,11 @@
             }
 
             li {
+                cursor: pointer;
                 display: inline-block;
                 list-style-type: none;
                 margin-right: 1.5rem;
+                font-size: 1.6rem;
 
                 &:last-child {
                     margin-right: 0;
@@ -51,7 +60,6 @@
                     line-height: 1;
                     color: black;
                     text-decoration: none;
-                    text-transform: uppercase;
                 }
             }
         }
