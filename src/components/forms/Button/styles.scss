@@ -4,7 +4,7 @@
     font-size: 1.6rem;
     line-height: 1;
     font-weight: 300;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     color: white;
     background: #1A73E8;
     padding: 1rem 0;
@@ -12,4 +12,9 @@
     border: 0;
     outline: none;
     cursor: pointer;
+
+}
+
+.btn:hover {
+    background: teal;
 }

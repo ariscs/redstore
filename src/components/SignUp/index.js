@@ -42,10 +42,13 @@ const SignUp = props => {
     }
 
     return(
+        <div className="complete">
+        <div className="half1" style={{backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%),url(https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjIxMTIzfQ&auto=format&fit=crop&w=750&q=80)`}}>
+            <h1>La mejor tienda de productos de IOT</h1>
+        </div>
         <div className="signup">
             <div className="wrap">
                 <h2>Registro</h2>
-
                 {errors.length > 0 && (
                     <ul>
                         {errors.map((err, index) => {
@@ -94,6 +97,7 @@ const SignUp = props => {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
