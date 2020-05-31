@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-const ProductBox = ({ data, key }) => {
+const ProductBox = ({ data }) => {
     return (
         <div className="pboxWrap">
             <div className="pbox">

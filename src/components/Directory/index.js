@@ -6,20 +6,31 @@ import Sensor from './../../assets/sensor.jpg';
 import Final from './../../assets/final.jpg';
 import Accesories from './../../assets/accesories.jpg';
 
-import { firestore } from './../../firebase/utils';
+import { firestore, auth } from './../../firebase/utils';
 
 import ProductBox from './../../components/ProductBox'
 
 const Directory = props => {
     const [d, setD] = useState([]);
+    const [cart, setCart] = useState({
+        productos: [],
+        user: ''
+    })
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await firestore.collection("productos").get();
+            const userId = await auth.currentUser;
             // setD(data.docs.map(doc => (doc.data())));
             setD(data.docs);
-            // const ids = data.docs.map(doc => (doc.id));
+            if(userId){
+                setCart({
+                    ...cart,
+                    user: userId.uid
+                });
+            }
         }
+
         fetchData();
     }, []);
 
