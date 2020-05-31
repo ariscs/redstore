@@ -14,26 +14,24 @@ const Directory = props => {
     const [d, setD] = useState([]);
     const [cart, setCart] = useState({
         productos: [],
-        user: null
+        user: ''
     })
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await firestore.collection("productos").get();
+            const userId = await auth.currentUser;
             // setD(data.docs.map(doc => (doc.data())));
             setD(data.docs);
-            // const ids = data.docs.map(doc => (doc.id));
-        }
-
-        const getUser = async () => {
-            const cUser = await auth.currentUser;
-            setCart({
-                user: cUser,
-            })
+            if(userId){
+                setCart({
+                    ...cart,
+                    user: userId.uid
+                });
+            }
         }
 
         fetchData();
-        getUser();
     }, []);
 
     return (
