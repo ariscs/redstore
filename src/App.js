@@ -19,6 +19,7 @@ import HomepageLayout from './layouts/HomepageLayout';
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
 import SignIn from './pages/SignIn';
+import Cartpage from './pages/Cartpage';
 
 const App = props => {
     const { setCurrentUser, currentUser } = props;
@@ -60,6 +61,18 @@ const App = props => {
                 <Route path="/signin" render={() => (
                     <MainLayout>
                         <SignIn />
+                    </MainLayout>
+                )} />
+                <Route path="/carrito" render={() => (
+                    <WithAuth>
+                        <MainLayout>
+                            <Cartpage />
+                        </MainLayout>
+                    </WithAuth>
+                )} />
+                <Route path="/crm" render={() => (
+                    <MainLayout>
+                        <h1>CRM</h1>
                     </MainLayout>
                 )} />
             </Switch>

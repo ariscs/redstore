@@ -23,7 +23,9 @@ const Header = props => {
                 <div className="callToActions">
                     {currentUser && (
                     <ul>
-                        <li><IoIosCart size="30px"/></li>
+                        <li>
+                            <Link to="/carrito"><IoIosCart size="30px"/></Link>
+                        </li>
                         <li><span onClick={() => auth.signOut()}>Salir</span></li>
                     </ul>
                     )}

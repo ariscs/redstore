@@ -1,0 +1,80 @@
+.homepage {
+    height: calc(100% - 6.5rem - 5.8rem);
+
+    .wrap {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .cart {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+            border-radius: 10px;
+            border: solid 1px black;
+            overflow: hidden;
+
+            .title {
+                width: 100%;
+                text-align: center;
+                color: white;
+                background-color: #707070;
+            }
+
+            .items {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+
+            .total {
+                width: 100%;
+                display: flex;
+                align-items: center;
+
+                &--text {
+                    padding-left: 2rem;
+                    display: flex;
+                    flex-grow: 1;
+                    justify-content: flex-start;
+                    align-items: center;
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                }
+
+                &--price {
+                    padding-right: 2rem;
+                    display: flex;
+                    flex-grow: 1;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+            }
+
+            .form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                input{
+                    margin-top: 2rem;
+                }
+            }
+
+            .buy {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 2rem;
+                padding-right: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
