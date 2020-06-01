@@ -1,20 +1,19 @@
 import React from 'react';
 import './styles.scss';
 
-const ProductBox = ({ data }) => {
+const ProductBox = (props) => {
     return (
         <div className="pboxWrap">
             <div className="pbox">
-                <div className="imgBox" style={{backgroundImage: `url(${data.img})`}}>
-                    {/* <img src="/boards/amega.jpg"/> */}
-                </div>
+                <div className="imgBox" style={{backgroundImage: `url(${props.data.img})`}}></div>
+
                 <div className="product">
                     <div className="info">
-                        <p className="nombre">{data.nombre}</p>
-                        <p className="precio">${data.precio}.00</p>
+                        <p className="nombre">{props.data.nombre}</p>
+                        <p className="precio">${props.data.precio}.00</p>
                     </div>
                     <div className="add">
-                        <button>Agregar</button>
+                        <button onClick={() => props.cartHandle(props.data, props.tag)}>Agregar</button>
                     </div>
                 </div>
             </div>

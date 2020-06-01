@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { store } from 'react-notifications-component';
 import './styles.scss';
 
 import Board from './../../assets/board.jpg';
@@ -21,7 +22,7 @@ const Directory = props => {
         const fetchData = async () => {
             const data = await firestore.collection("productos").get();
             const userId = await auth.currentUser;
-            // setD(data.docs.map(doc => (doc.data())));
+
             setD(data.docs);
             if(userId){
                 setCart({
@@ -34,10 +35,54 @@ const Directory = props => {
         fetchData();
     }, []);
 
+    const cartHandle = async (pData, tag) => {
+        if (cart.user == '') {
+            alert("Es necesario iniciar sesión");
+        } else {
+            const nombre = await pData.nombre
+            const precio = await pData.precio
+            const productosCarrito = cart.productos
+            // alert(nombre+tag+precio);
+            if(!productosCarrito.some(e => {
+                //ID de cada producto
+                if (e.producto ==  tag) {
+                    e.cantidad += e.cantidad
+                    return true;
+                }
+            })) {
+                productosCarrito.push({
+                    cantidad: 1,
+                    nombre: nombre,
+                    precio: precio,
+                    producto: tag,
+                });
+            }
+
+            setCart({
+                ...cart,
+                productos: productosCarrito
+            });
+
+            store.addNotification({
+                title: "Producto agregado",
+                message: "Podrás terminar tu compra entrando a tu carrito",
+                type: "success",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animated", "fadeIn"],
+                animationOut: ["animated", "fadeOut"],
+                dismiss: {
+                    duration: 2000,
+                    onScreen: true
+                }
+            });
+        }
+    }
+
     return (
         <div className="directory">
             <div className="wrap">
-                <div div className = "category"
+                <div className="category"
                 style = {
                     {
                         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Board})`
@@ -45,7 +90,7 @@ const Directory = props => {
                 } >
                     <p>Compra Tarjetas</p>
                 </div>
-                <div div className = "category"
+                <div className = "category"
                 style = {
                     {
                         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Sensor})`
@@ -53,7 +98,7 @@ const Directory = props => {
                 } >
                     <p>Compra Sensores</p>
                 </div>
-                <div div className = "category"
+                <div className = "category"
                 style = {
                     {
                         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Final})`
@@ -61,7 +106,7 @@ const Directory = props => {
                 } >
                     <p>Compra Productos Domesticos</p>
                 </div>
-                <div div className = "category"
+                <div className = "category"
                 style = {
                     {
                         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${Accesories})`
@@ -73,7 +118,7 @@ const Directory = props => {
             <div className="content">
                 <div className="pWrap">
                     {d.map(i => (
-                        <ProductBox data={i.data()} key={i.id}/>
+                        <ProductBox data={i.data()} key={i.id} tag={i.id} cartHandle={cartHandle}/>
                     ))}
                 </div>
             </div>

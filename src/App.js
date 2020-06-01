@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
 import './default.scss';
 
 import { auth, handleUserProfile } from './firebase/utils'
@@ -43,6 +45,7 @@ const App = props => {
 
     return (
         <div className="App">
+            <ReactNotification />
             <Switch>
                 <Route exact path="/" render={() => (
                     <HomepageLayout>
