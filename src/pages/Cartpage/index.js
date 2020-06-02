@@ -85,10 +85,11 @@ const Cartpage = props => {
             
             let venta = {
                 total: total,
-                estado: estado,
-                ciudad: ciudad,
-                direccion: direccion,
-                user: cart.user
+                estado: estado.toLowerCase(),
+                ciudad: ciudad.toLowerCase(),
+                direccion: direccion.toLowerCase(),
+                user: cart.user,
+                date: new Date().toDateString()
             }
 
             let setDoc = firestore.collection('completa').doc().set(venta);
