@@ -12,7 +12,7 @@ const Cartpage = props => {
 
     const [cart, setCart] = useState({});
     const [p, setP] = useState([]);
-    const [total, setTotal] = useState(0);
+    const [totalC, setTotalC] = useState(0);
 
     const [estado, setEstado] = useState("")
     const [ciudad, setCiudad] = useState("")
@@ -37,7 +37,6 @@ const Cartpage = props => {
         fetchData();
     }, [cart]);
 
-
     const updateCart = () => {
         let x = cart;
         for (var i = 0; i < x.productos.length; i++){
@@ -60,6 +59,14 @@ const Cartpage = props => {
                 updateCart();
             }
         }
+    }
+
+    const getTotalC = () => {
+        let total = 0;
+        for (var i = 0; i < cart.productos.length; i++){
+            total += (cart.productos[i].precio*cart.productos[i].cantidad);
+        }
+        setTotalC(total);
     }
 
     const handleSell = () => {
@@ -129,7 +136,7 @@ const Cartpage = props => {
                             <p>Total:</p>
                         </div>
                         <div className="total--price">
-                            <p>${total}.00</p>
+                            <p>${totalC}.00</p>
                         </div>    
                     </div>
                     <div className="form">
@@ -138,6 +145,7 @@ const Cartpage = props => {
                         <input type="text" placeholder="Dirección" onChange={e => setDireccion(e.target.value)} />
                     </div>
                     <div className="buy">
+                        <button onClick={getTotalC}>Confirmar</button>
                         <button onClick={handleSell}>Comprar</button>
                     </div>
                 </div>
