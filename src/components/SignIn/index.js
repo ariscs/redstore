@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import './styles.scss';
 
 import Button from './../forms/Button';
@@ -8,6 +8,7 @@ import FormInput from './../forms/FormInput';
 import { signInWithGoogle, auth } from './../../firebase/utils'
 
 const SignInComponent = props => {
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,7 +23,7 @@ const SignInComponent = props => {
         try {
             await auth.signInWithEmailAndPassword(email, password);
             resetForm();
-            props.history.push('/');
+            history.push('/');
         } catch(err) {
             console.log(err);
         }
