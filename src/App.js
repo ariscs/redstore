@@ -13,6 +13,7 @@ import WithAuth from './hoc/withAuth';
 
 //Layout
 import MainLayout from './layouts/MainLayout';
+import CrmLayout from './layouts/CrmLayout';
 import HomepageLayout from './layouts/HomepageLayout';
 
 //Pages
@@ -20,6 +21,8 @@ import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
 import SignIn from './pages/SignIn';
 import Cartpage from './pages/Cartpage';
+import Clientespage from './pages/crm/Clientespage';
+import Ventaspage from './pages/crm/Ventaspage';
 
 const App = props => {
     const { setCurrentUser, currentUser } = props;
@@ -71,9 +74,14 @@ const App = props => {
                     </WithAuth>
                 )} />
                 <Route path="/crm" render={() => (
-                    <MainLayout>
-                        <h1>CRM</h1>
-                    </MainLayout>
+                    <CrmLayout>
+                        <Clientespage />
+                    </CrmLayout>
+                )} />
+                <Route path="/ventas" render={() => (
+                    <CrmLayout>
+                        <Ventaspage />
+                    </CrmLayout>
                 )} />
             </Switch>
         </div>

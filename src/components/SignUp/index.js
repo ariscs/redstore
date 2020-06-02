@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import './styles.scss';
 
 import { auth, handleUserProfile } from './../../firebase/utils';
@@ -8,6 +8,7 @@ import FormInput from './../forms/FormInput';
 import Button from './../forms/Button';
 
 const SignUp = props => {
+    const history = useHistory();
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -35,7 +36,7 @@ const SignUp = props => {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
             await handleUserProfile(user, {displayName});
             reset();
-            props.history.push('/');
+            history.push('/');
         } catch(err) {
             console.log(err);
         }

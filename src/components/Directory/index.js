@@ -15,7 +15,7 @@ const Directory = props => {
     const [d, setD] = useState([]);
     const [cart, setCart] = useState({
         productos: [],
-        user: ''
+        user: '',
     })
 
     useEffect(() => {
@@ -39,14 +39,14 @@ const Directory = props => {
         if (cart.user == '') {
             alert("Es necesario iniciar sesión");
         } else {
-            const nombre = await pData.nombre
-            const precio = await pData.precio
-            const productosCarrito = cart.productos
+            const nombre = await pData.nombre;
+            const precio = await pData.precio;
+            const productosCarrito = cart.productos;
             // alert(nombre+tag+precio);
             if(!productosCarrito.some(e => {
                 //ID de cada producto
                 if (e.producto ==  tag) {
-                    e.cantidad += e.cantidad
+                    e.cantidad += e.cantidad;
                     return true;
                 }
             })) {
@@ -55,13 +55,17 @@ const Directory = props => {
                     nombre: nombre,
                     precio: precio,
                     producto: tag,
+                    img: pData.img
                 });
             }
 
             setCart({
                 ...cart,
-                productos: productosCarrito
+                productos: productosCarrito,
             });
+            
+
+            let setDoc = firestore.collection('ventas').doc(cart.user+'cart').set(cart);
 
             store.addNotification({
                 title: "Producto agregado",
@@ -81,7 +85,7 @@ const Directory = props => {
 
     return (
         <div className="directory">
-            <div className="wrap">
+            <div className="wrapd">
                 <div className="category"
                 style = {
                     {
