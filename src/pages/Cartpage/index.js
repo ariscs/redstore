@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { store } from 'react-notifications-component';
 import './styles.scss';
 
@@ -60,7 +61,6 @@ const Cartpage = props => {
             }
         }
     }
-
     const getTotalC = () => {
         let total = 0;
         for (var i = 0; i < cart.productos.length; i++){
@@ -131,7 +131,11 @@ const Cartpage = props => {
                             <CartItem key={i} data={item} handleChange={handleChange}/>
                         ))}
                     </div>
-                <div className="back">Continuar comprando</div>
+                <div className="back">
+                    <Link to="/">
+                            <p> Continuar comprando</p>
+                    </Link>
+                </div>
             </div>
             <div className="wrap2">
                     <h3>Detalles de compra</h3>
@@ -162,5 +166,7 @@ const Cartpage = props => {
         </section>
     );
 };
+
+
 
 export default Cartpage;
