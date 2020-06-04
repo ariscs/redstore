@@ -19,8 +19,12 @@
             padding: 20px;
             box-sizing: border-box;
             border-radius: 10px;
-              border-collapse: separate;
-              border-spacing: 10px 5px;
+            border-collapse: separate;
+            border-spacing: 10px 5px;
+
+            tr:hover {
+                background-color: #f5f5f5;
+            }
 
              tr {
                 color: rgb(107, 107, 107);
@@ -29,6 +33,9 @@
 
 
         thead{
+            tr:hover {
+                background-color: white !important;
+            }
             tr{
                 td{
                     font-weight: bold;
