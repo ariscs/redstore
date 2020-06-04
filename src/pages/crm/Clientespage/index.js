@@ -52,8 +52,8 @@ const Clientespage = props => {
                 <div className="titulo">
                     <p>Clientes RedStore</p>
                 </div>
-                <div className="clientes">
-                    <table>
+                <div style={{width: "100%"}}>
+                    <table cellspacing="10" cellpadding="10">
                         <thead>
                             <tr>
                                 <td>ID</td>
