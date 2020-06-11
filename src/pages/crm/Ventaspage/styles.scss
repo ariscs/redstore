@@ -13,8 +13,32 @@
         justify-content: center;
         align-items: center;
 
+        .initG {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            button{
+                align-self: center;
+                justify-self: center;
+                width: 30%;
+                height: 4rem;
+                border:none;
+                font-weight: bold;
+                border-radius: 5px;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+
         .titulo {
             font-size: 2.4rem;
+            font-weight: bold;
+        }
+
+        .titulo {
+            font-size: 2rem;
             font-weight: bold;
         }
 

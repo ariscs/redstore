@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import DataTable from 'react-data-table-component';
+import { ResponsivePie } from '@nivo/pie';
 import './styles.scss';
 
 import { firestore } from './../../../firebase/utils';
@@ -6,6 +8,42 @@ import { firestore } from './../../../firebase/utils';
 const Clientespage = props => {
     const [lista, setLista] = useState([]);
     const [ventas, setVentas] = useState([]);
+
+    const columns = [
+        {
+            name: 'ID cliente',
+            selector: 'id',
+            sortable: true,
+        },
+        {
+            name: 'Nombre',
+            selector: 'data.displayName',
+            sortable: true,
+        },
+        {
+            name: 'Correo',
+            selector: 'data.email',
+            sortable: true,
+        },
+        {
+            name: 'Fecha',
+            selector: 'data.date',
+            sortable: false,
+        },
+    ];
+
+    const customStyles = {
+        rows: {
+            style: {
+                fontSize: 16,
+            }
+        },
+        headCells: {
+            style: {
+                fontSize: 18,
+            },
+        },
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,26 +91,63 @@ const Clientespage = props => {
                     <p>Clientes RedStore</p>
                 </div>
                 <div style={{width: "100%"}}>
-                    <table cellspacing="10" cellpadding="10">
-                        <thead>
-                            <tr>
-                                <td>ID</td>
-                                <td>Nombre</td>
-                                <td>Correo</td>
-                                {/* <td>Pedidos</td>
-                                <td>Último pedido</td> */}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {lista.map((user, i) => (
-                            <tr key={i}>
-                                <td>{user.id}</td>
-                                <td>{user.data.displayName}</td>
-                                <td>{user.data.email}</td>
-                            </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <DataTable
+                        title="Lista de clientes"
+                        data={lista}
+                        columns={columns}
+                        customStyles={customStyles}
+                        pagination={true}
+                        paginationPerPage={10}
+                    />
+                </div>
+                <div className="titulo">
+                    <p>Estadisticas Clientes</p>
+                </div>
+                <div className="pie">
+                    <ResponsivePie
+                        data={[{id: 'Nuevos clientes JUNIO', value:lista.length}, {id: 'Nuevos clientes MAYO', value: 1}]}
+                        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+                        sortByValue={true}
+                        innerRadius={0.5}
+                        padAngle={0.7}
+                        cornerRadius={3}
+                        colors={{ scheme: 'reds' }}
+                        borderWidth={1}
+                        borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                        radialLabelsSkipAngle={10}
+                        radialLabelsTextXOffset={6}
+                        radialLabelsTextColor="#333333"
+                        radialLabelsLinkOffset={0}
+                        radialLabelsLinkDiagonalLength={16}
+                        radialLabelsLinkHorizontalLength={24}
+                        radialLabelsLinkStrokeWidth={1}
+                        radialLabelsLinkColor={{ from: 'color' }}
+                        slicesLabelsSkipAngle={10}
+                        slicesLabelsTextColor="#333333"
+                        animate={true}
+                        motionStiffness={90}
+                        motionDamping={15}
+                        legends={[
+                            {
+                                anchor: 'bottom',
+                                direction: 'row',
+                                translateY: 56,
+                                itemWidth: 100,
+                                itemHeight: 18,
+                                itemTextColor: '#999',
+                                symbolSize: 18,
+                                symbolShape: 'circle',
+                                effects: [
+                                    {
+                                        on: 'hover',
+                                        style: {
+                                            itemTextColor: '#000'
+                                        }
+                                    }
+                                ]
+                            }
+                        ]}
+                    />
                 </div>
             </div>
         </section>
