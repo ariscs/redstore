@@ -36,7 +36,7 @@ const Directory = props => {
     }, []);
 
     const cartHandle = async (pData, tag) => {
-        if (cart.user == '') {
+        if (cart.user === '') {
             alert("Es necesario iniciar sesión");
         } else {
             const nombre = await pData.nombre;
@@ -45,7 +45,7 @@ const Directory = props => {
             // alert(nombre+tag+precio);
             if(!productosCarrito.some(e => {
                 //ID de cada producto
-                if (e.producto ==  tag) {
+                if (e.producto ===  tag) {
                     e.cantidad += e.cantidad;
                     return true;
                 }

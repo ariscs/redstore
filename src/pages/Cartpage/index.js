@@ -70,7 +70,7 @@ const Cartpage = props => {
     }
 
     const handleSell = () => {
-        if (estado == "" || ciudad == "" || direccion=="") {
+        if (estado === "" || ciudad === "" || direccion === "") {
             store.addNotification({
                 title: "No fue posible continuar",
                 message: "Verifica que los campos esten completos para que puedas recibir tu paquete",
