@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { store } from 'react-notifications-component';
 import './styles.scss';
 
@@ -60,7 +61,6 @@ const Cartpage = props => {
             }
         }
     }
-
     const getTotalC = () => {
         let total = 0;
         for (var i = 0; i < cart.productos.length; i++){
@@ -121,17 +121,30 @@ const Cartpage = props => {
 
     return(
         <section className="homepage">
-            <div className="wrap">
-                <div className="cart">
-                    <div className="title">
-                        <h1>Carrito</h1>
-                    </div>
+            <div className="shop">
+            <div className="cart">
+                 <div className="title">
+                        <h3>Carrito de compras</h3>
+                </div>
                     <div className="items">
                         {p.map((item, i) => (
                             <CartItem key={i} data={item} handleChange={handleChange}/>
                         ))}
                     </div>
-                    <div className="total">
+                <div className="back">
+                    <Link to="/">
+                            <p> Continuar comprando</p>
+                    </Link>
+                </div>
+            </div>
+            <div className="wrap2">
+                    <h3>Detalles de compra</h3>
+                    <div className="form">
+                       <input type="text" placeholder="Estado" onChange={e => setEstado(e.target.value)} />
+                        <input type="text" placeholder="Ciudad" onChange={e => setCiudad(e.target.value)} />
+                        <input type="text" placeholder="Dirección" onChange={e => setDireccion(e.target.value)} />
+                    </div>
+                      <div className="total">
                         <div className="total--text">
                             <p>Total:</p>
                         </div>
@@ -139,11 +152,11 @@ const Cartpage = props => {
                             <p>${totalC}.00</p>
                         </div>    
                     </div>
-                    <div className="form">
+                    {/* <div className="form">
                         <input type="text" placeholder="Estado" onChange={e => setEstado(e.target.value)} />
                         <input type="text" placeholder="Ciudad" onChange={e => setCiudad(e.target.value)} />
                         <input type="text" placeholder="Dirección" onChange={e => setDireccion(e.target.value)} />
-                    </div>
+                    </div> */}
                     <div className="buy">
                         <button onClick={getTotalC}>Confirmar</button>
                         <button onClick={handleSell}>Comprar</button>
@@ -153,5 +166,7 @@ const Cartpage = props => {
         </section>
     );
 };
+
+
 
 export default Cartpage;

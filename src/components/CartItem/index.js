@@ -16,6 +16,7 @@ const CartItem = props => {
                 </div>
             </div>
             <div className="item--q">
+                <p>Cantidad</p>
                 <input 
                     type="number"
                     id="quantity"
