@@ -141,7 +141,7 @@ const Cartpage = props => {
                     <h3>Detalles de compra</h3>
                     <div className="form">
                        <input type="text" placeholder="Estado" onChange={e => setEstado(e.target.value)} />
-                        <input type="text" placeholder="Ciudad" onChange={e => setCiudad(e.target.value)} />
+                        <input type="text" placeholder="Municipio/Delegación" onChange={e => setCiudad(e.target.value)} />
                         <input type="text" placeholder="Dirección" onChange={e => setDireccion(e.target.value)} />
                     </div>
                       <div className="total">

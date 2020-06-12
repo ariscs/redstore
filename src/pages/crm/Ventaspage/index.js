@@ -158,7 +158,7 @@ const Ventaspage = props => {
                 </div>
                 <div className="pie">
                     <ResponsivePie
-                        data={[{id: 'Ventas MAYO', value: 0}, {id: 'Ventas JUNIO', value:ventas.length}]}
+                        data={[{id: 'Ventas MAYO', value: 1}, {id: 'Ventas JUNIO', value:ventas.length}]}
                         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
                         sortByValue={true}
                         innerRadius={0.5}
@@ -207,7 +207,7 @@ const Ventaspage = props => {
                 </div>
                 <div className="pie">
                     <ResponsivePie
-                        data={[{id: 'Ingresos MAYO', value: 15}, {id: 'Ingresos JUNIO', value:gTotal}]}
+                        data={[{id: 'Ingresos MAYO', value: 8000}, {id: 'Ingresos JUNIO', value:gTotal}]}
                         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
                         sortByValue={true}
                         innerRadius={0.5}
